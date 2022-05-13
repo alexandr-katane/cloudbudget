@@ -1,0 +1,552 @@
+@import "mixins";
+
+//<Подключение шрифтов через Google fonts>============================================================================
+
+@import "fonts";
+@import url('https://fonts.googleapis.com/css?family=Roboto:wght@400,500,700&display=swap&subset=cyrillic-ext');
+@import url('https://fonts.googleapis.com/css?family=Lato:wght@400,700&display=swap&subset=cyrillic-ext');
+
+
+//<Шрифт по умолчанию>================================================================================================
+$fontFamily: "Roboto";
+//</Шрифт по умолчанию>===============================================================================================
+
+//<Переменные>========================================================================================================
+$minWidth: 320px;
+$maxWidth: 1440;
+$maxWidthContainer: 71.25;
+$md1: $maxWidthContainer+12;
+$md2: 62;
+$md3: 48;
+$md4: 30;
+//</Переменные>=======================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>========================================================================================
+@import "nullstyle";
+
+body {
+    font-family: $fontFamily, sans-serif;
+    font-size: 14px;
+
+    &._lock {
+        overflow: hidden;
+    }
+}
+
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>========================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    &._load {}
+
+}
+
+//</ОБОЛОЧКА>=========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>====================================================================================================
+._container {
+    max-width: $maxWidthContainer+rem;
+    margin: 0 auto;
+    padding: 0 15px
+}
+
+//</ОСНОВНАЯ СЕТКА>===================================================================================================
+
+@import "header";
+@import "ui";
+@import "footer";
+
+
+.page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.home {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(213, 32, 71, 0.8) 0%, rgba(238, 61, 27, 0.8) 100%);
+        z-index: 2;
+        box-shadow: 0px 4px 4px 0px #00000040;
+    }
+
+    &__back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__container {
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__content {
+        padding-top: 150px;
+        @include responsive-size(padding-bottom, 150, 100, 1140);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__title {
+        font-weight: 700;
+        @include responsive-size(font-size, 72, 36, 1140);
+        line-height: 1.16;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        margin-bottom: 0.555em;
+    }
+
+    &__text {
+        font-weight: 500;
+        @include responsive-size(font-size, 24, 18, 1140);
+        line-height: 150%;
+        color: #FFFFFF;
+        margin-bottom: 1.666em;
+    }
+
+    &__link {
+        line-height: 16px;
+        text-transform: uppercase;
+        padding: 1.14em 2.14em;
+        color: #ED4C5C;
+        background: #FFFFFF;
+        border-radius: 6px;
+        transition: all 0.3s ease 0s;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: #ffffff;
+                background-color: rgb(174, 170, 170);
+            }
+        }
+    }
+}
+
+//====================================================================================================================
+
+.application {
+
+    &__title {
+        margin-bottom: 1.14em;
+    }
+
+    &__text {
+        margin-bottom: 1.4em;
+        text-align: justify;
+    }
+
+    &__link {
+        color: #ED4C5C;
+        transition: all 0.3s ease 0s;
+
+        @media (any-hover:hover) {
+            &:hover {
+                color: #a0222f;
+            }
+        }
+    }
+
+
+}
+
+.section {
+    @include responsive-size(padding-top, 95, 35, 1140);
+    @include responsive-size(padding-bottom, 95, 35, 1140);
+
+    &__row {
+        display: flex;
+
+        @media (max-width:$md3+em) {
+            flex-direction: column;
+        }
+    }
+
+    &__content {
+        padding-top: 33px;
+        padding-bottom: 16px;
+        padding-right: 10px;
+
+        @media (min-width:$md2+em) {
+            padding-right: 110px
+        }
+    }
+
+    &__column {
+        flex: 1 0 50%;
+
+        &_img {
+            padding: 0 95px 0 0;
+
+            @media (max-width:$md2+em) {
+                padding-right: 0;
+            }
+
+            @media (min-width:$md3+em) {
+                padding-left: 10px;
+            }
+        }
+    }
+
+    &__img-container {
+        position: relative;
+        height: 100%;
+        border-radius: 15px;
+        overflow: hidden;
+
+        @media (max-width:$md3+em) {
+            padding-bottom: 50%;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+//====================================================================================================================
+
+.opportunities {
+    background: #FAFAFA;
+    @include responsive-size(padding-top, 109, 65, 1140);
+    @include responsive-size(padding-bottom, 80, 50, 1140);
+
+
+    &__container {}
+
+    &__title {
+        text-align: center;
+        margin-bottom: 2em;
+    }
+
+    &__content {}
+
+    &__items {
+        padding-top: 157px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        column-gap: 30px;
+        row-gap: 177px;
+    }
+}
+
+
+.item-opportunity {
+
+    &__back {
+        position: absolute;
+        top: -157px;
+        left: 0;
+        width: 100%;
+        height: 250px;
+    }
+
+    &__content {
+        @include responsive-size(padding-left, 29, 0, 1140);
+        @include responsive-size(padding-right, 29, 0, 1140);
+        position: relative;
+        height: 100%;
+    }
+
+
+
+    &__information {
+        background: #FFFFFF;
+        box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-align: center;
+        padding: 25px 0;
+        @include responsive-size(padding-left, 25, -10, 1140);
+        @include responsive-size(padding-right, 25, -10, 1140);
+
+        @media (max-width:$md2+em) {
+            padding: 25px 10px;
+        }
+
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+    }
+
+    &__title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 1.4;
+        text-align: center;
+        margin-bottom: 1.11em;
+        color: #101010;
+
+    }
+
+    &__text {
+        font-size: 12px;
+        margin-bottom: 1em;
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+    }
+
+    &__link {
+        font-size: 12px;
+        color: #ED4C5C;
+        transition: all 0.3s ease 0s;
+
+        @media (any-hover:hover) {
+            &:hover {
+                color: #a0222f;
+            }
+        }
+    }
+}
+
+//====================================================================================================================
+
+.technologies {
+    @include responsive-size(padding-top, 105, 60, 1140);
+    @include responsive-size(padding-bottom, 105, 60, 1140);
+
+    &__container {}
+
+    &__title {
+        text-align: center;
+        margin-bottom: 2em;
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 30px;
+    }
+
+    &__item {}
+}
+
+.item-technologie {
+
+    &__content {
+        padding: 0 30px;
+        @include responsive-size(padding-top, 30, 10, 11140);
+        @include responsive-size(padding-bottom, 30, 10, 11140);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__number {
+        position: relative;
+        padding-bottom: 30px;
+
+        span {
+            font-family: 'Lato';
+            font-weight: 700;
+            font-size: 100px;
+            color: rgba(16, 16, 16, 0.08);
+        }
+    }
+
+    &__img {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &__title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 1.16;
+        color: #101010;
+        margin-bottom: 0.61em;
+    }
+
+    &__text {
+        font-size: 12px;
+        line-height: 1.16;
+        text-align: center;
+        color: #000000;
+    }
+}
+
+//====================================================================================================================
+
+.economy {
+    background: #ED4C5C;
+
+    &__title {
+        color: #fff;
+        margin-bottom: 1.14em;
+    }
+
+    &__text {
+        margin-bottom: 2em;
+        text-align: justify;
+        color: #fff;
+    }
+
+    &__links {}
+
+    &__link {
+        display: inline-block;
+
+        &:not(:last-child) {
+            margin-right: 23px;
+        }
+
+        & svg path {
+            transition: all 0.3s ease 0s;
+        }
+
+        @media (any-hover:hover) {
+            &:hover {
+                & svg path {
+                    fill: #c8c8c8;
+                }
+            }
+        }
+    }
+}
+
+//====================================================================================================================
+
+.contact {
+    @include responsive-size(padding-top, 159, 70, 1140);
+    @include responsive-size(padding-bottom, 136, 60, 1140);
+
+    &__container {}
+
+    &__row {
+        display: flex;
+        align-items: center;
+
+        @media (max-width:$md3+em) {
+            flex-direction: column;
+        }
+    }
+
+    &__column {
+        flex: 1 0 50%;
+
+        @media (max-width:$md3+em) {
+            flex: 1 1 100%;
+            width: 100%;
+
+            &:first-child {
+                margin-bottom: 30px;
+            }
+        }
+
+    }
+
+    &__content {
+        padding-right: 30px;
+
+        @media (min-width:$md2+em) {
+            padding-right: 115px;
+        }
+    }
+
+    &__title {
+        margin-bottom: 1em;
+    }
+
+    &__text {
+        text-align: justify;
+    }
+
+    &__form {
+        @media (min-width:$md3+em) {
+            margin-left: 10px;
+        }
+    }
+}
+
+.form-contact {
+
+    &__container {}
+
+    &__button {
+        line-height: 16px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        background: #ED4C5C;
+        border: 1.5px solid #ED4C5C;
+        border-radius: 6px;
+        padding: 17px 40px;
+        transition: all 0.3s ease 0s;
+
+        @media (any-hover:hover) {
+            &:hover {
+                color: #ED4C5C;
+                background: #fff;
+                border: 1.5px solid #ED4C5C;
+            }
+        }
+    }
+}
+
+.input {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    padding: 20px 30px;
+    font-size: 16px;
+    line-height: 19px;
+    color: rgba(19, 39, 67, 0.5);
+
+}
+
+.input-container {
+    position: relative;
+    max-width: 550px;
+    margin-bottom: 24px;
+
+}
+
+.form__error {
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    width: 100%;
+    color: red;
+    text-align: center;
+}

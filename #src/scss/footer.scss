@@ -1,0 +1,38 @@
+.footer {
+    padding: 45px 0;
+    background: #FAFAFA;
+
+    &__container {}
+
+    &__title {
+        font-family: 'Lato';
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 22px;
+        color: #101010;
+        margin-bottom: 1em;
+    }
+
+    &__address {
+        display: inline-block;
+        font-family: 'Lato';
+        font-size: 12px;
+        line-height: 150%;
+        color: #101010;
+        transition: all 0.3s ease 0s;
+        @include responsive-size(margin-bottom, 45, 15, 1140);
+
+        @media (any-hover:hover) {
+            &:hover {
+                color: rgb(131, 131, 131);
+            }
+        }
+    }
+
+    &__rights {
+        font-family: 'Lato';
+        font-size: 12px;
+        line-height: 14px;
+        color: #101010;
+    }
+}

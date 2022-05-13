@@ -1,0 +1,43 @@
+.title {
+    font-weight: 500;
+    line-height: 1.16;
+    color: #000000;
+    @include responsive-size(font-size, 36, 24, 1140);
+}
+
+.text {
+    line-height: 1.4;
+    color: #000000;
+}
+
+._ibg {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+    img {
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+body.ie {
+    ._ibg {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    ._ibg img {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
